@@ -1,3 +1,13 @@
+import MyTestsContainer from "@/components/MyTestsContainer";
+import Sidebar from "@/components/sidebar";
+
 export default function Home() {
-  return <main className="flex flex-1" />;
+  return (
+    <main className="flex h-dvh overflow-hidden bg-[#F8F9FC]">
+      <Sidebar />
+      <section className="min-w-0 flex-1 overflow-y-auto">
+        <MyTestsContainer />
+      </section>
+    </main>
+  )
 }
