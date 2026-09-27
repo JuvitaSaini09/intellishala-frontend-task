@@ -11,11 +11,13 @@ type TestCardProps = {
 
 export function TestCard({ test }: TestCardProps) {
   return (
-    <li className="flex flex-col gap-3 py-4">
+    <li className="flex flex-col gap-3.5 rounded-xl border border-[#E8EAF0] bg-white p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-ink">{test.title}</p>
-          <p className="mt-0.5 text-xs text-soft">
+          <p className="text-[15px] leading-5 font-semibold text-ink">
+            {test.title}
+          </p>
+          <p className="mt-1 text-xs text-soft">
             {questionLabel(test.questionCount)}
           </p>
         </div>
@@ -24,22 +26,26 @@ export function TestCard({ test }: TestCardProps) {
 
       <ClassSubject test={test} />
 
-      <dl className="grid grid-cols-2 gap-x-4 gap-y-3">
-        <div>
-          <dt className="text-xs text-soft">Assigned</dt>
-          <dd className="mt-0.5">
+      <div className="grid grid-cols-2 gap-3 rounded-lg bg-[#F7F8FC] px-3 py-2.5">
+        <div className="min-w-0">
+          <p className="text-[11px] font-medium tracking-[0.02em] text-soft">
+            Assigned
+          </p>
+          <div className="mt-1">
             <DateText value={test.assignedAt} />
-          </dd>
+          </div>
         </div>
-        <div>
-          <dt className="text-xs text-soft">Due</dt>
-          <dd className="mt-0.5">
+        <div className="min-w-0">
+          <p className="text-[11px] font-medium tracking-[0.02em] text-soft">
+            Due Date
+          </p>
+          <div className="mt-1">
             <DateText value={test.dueAt} />
-          </dd>
+          </div>
         </div>
-      </dl>
+      </div>
 
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-3 border-t border-[#F0F1F5] pt-3">
         <p className="text-sm text-table-value">
           <span className="text-soft">Submissions </span>
           <span className="tabular-nums">

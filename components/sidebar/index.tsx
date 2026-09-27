@@ -1,22 +1,47 @@
+"use client";
+
 import { AccountCard } from "./account-card";
 import { product } from "./data";
 import { Logo } from "./logo";
 import { SidebarNav } from "./sidebar-nav";
+import { useSidebar } from "./sidebar-context";
 import { SignOutButton } from "./sign-out-button";
 import { Title } from "./title";
 import { WorkspaceCard } from "./workspace-card";
 
 export default function Sidebar() {
+  const { open, mobileOpen, setOpen } = useSidebar();
+
   return (
     <aside
+      id="app-sidebar"
       aria-label="Sidebar"
-      className="hidden h-full w-64 shrink-0 flex-col bg-white px-5 pt-9 pb-5 md:flex"
+      aria-hidden={!open}
+      inert={!open ? true : undefined}
+      className={[
+        "flex h-full w-64 shrink-0 flex-col bg-white px-5 pt-3 pb-5 lg:pt-7",
+        "fixed inset-y-0 right-0 z-50 transition-transform duration-200 ease-out",
+        "lg:static lg:z-0 lg:translate-x-0 lg:pointer-events-auto",
+        mobileOpen
+          ? "translate-x-0"
+          : "translate-x-full pointer-events-none",
+      ].join(" ")}
     >
-      <div className="flex items-center gap-3">
+      <div className="mb-4 flex justify-end lg:hidden">
+        <button
+          type="button"
+          aria-label="Close sidebar"
+          onClick={() => setOpen(false)}
+          className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-ink transition-colors hover:bg-[#EEF1F6]"
+        >
+          <CloseIcon />
+        </button>
+      </div>
+      <div className="hidden items-center gap-3 lg:flex">
         <Logo letter={product.mark} />
         <Title>{product.name}</Title>
       </div>
-      <div className="mt-8">
+      <div className="lg:mt-7">
         <WorkspaceCard />
       </div>
       <SidebarNav />
@@ -27,5 +52,22 @@ export default function Sidebar() {
         </div>
       </footer>
     </aside>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      aria-hidden="true"
+      className="size-5"
+    >
+      <path d="M6 6 18 18" />
+      <path d="M18 6 6 18" />
+    </svg>
   );
 }

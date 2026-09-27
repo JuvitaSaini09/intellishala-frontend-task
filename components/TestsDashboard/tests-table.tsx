@@ -18,17 +18,17 @@ const cellClassName = "px-3 py-3.5 first:pl-0 last:pr-0";
 export function TestsTable({ tests }: TestsTableProps) {
   return (
     <>
-      <div className="hidden overflow-x-auto lg:block">
-        <table className="w-full min-w-[860px] table-fixed border-collapse">
+      <div className="hidden overflow-x-auto min-[960px]:block">
+        <table className="w-full min-w-[980px] table-fixed border-collapse">
           <caption className="sr-only">Tests</caption>
           <colgroup>
-            <col className="w-[18%]" />
+            <col className="w-[20%]" />
             <col className="w-[16%]" />
-            <col className="w-[13%]" />
-            <col className="w-[13%]" />
-            <col className="w-[12%]" />
+            <col className="w-[14%]" />
+            <col className="w-[14%]" />
             <col className="w-[10%]" />
-            <col className="w-[18%]" />
+            <col className="w-[10%]" />
+            <col className="w-[16%]" />
           </colgroup>
           <thead>
             <tr>
@@ -79,7 +79,7 @@ export function TestsTable({ tests }: TestsTableProps) {
         </table>
       </div>
 
-      <ul className="divide-y divide-line lg:hidden">
+      <ul className="flex flex-col gap-3 py-4 min-[960px]:hidden">
         {tests.map((test) => (
           <TestCard key={test.id} test={test} />
         ))}

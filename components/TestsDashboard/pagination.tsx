@@ -19,11 +19,11 @@ export function Pagination({
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
 
   return (
-    <div className="flex flex-col gap-3 border-t border-line py-4 sm:flex-row sm:items-center sm:justify-between">
-      <p className="text-sm text-[#cdcfd6]">
+    <div className="flex flex-col gap-3 border-t border-line py-4 min-[960px]:flex-row min-[960px]:items-center min-[960px]:justify-between">
+      <p className="text-sm text-muted">
         {pageRangeLabel(page, pageSize, total)}
       </p>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <PageButton
           label="Previous page"
           disabled={page === 1}

@@ -3,9 +3,16 @@
 import { useState } from "react";
 import { defaultActiveNavId, navItems } from "./data";
 import { NavItem } from "./nav-item";
+import { useSidebar } from "./sidebar-context";
 
 export function SidebarNav() {
   const [activeId, setActiveId] = useState(defaultActiveNavId);
+  const { isDesktop, setOpen } = useSidebar();
+
+  function handleSelect(id: string) {
+    setActiveId(id);
+    if (!isDesktop) setOpen(false);
+  }
 
   return (
     <nav aria-label="Main" className="mt-5 min-h-0 flex-1 overflow-y-auto">
@@ -15,7 +22,7 @@ export function SidebarNav() {
             <NavItem
               item={item}
               isActive={item.id === activeId}
-              onSelect={setActiveId}
+              onSelect={handleSelect}
             />
           </li>
         ))}

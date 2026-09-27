@@ -25,7 +25,7 @@ type StatusPillProps = {
 export function StatusPill({ status }: StatusPillProps) {
   return (
     <span
-      className={`inline-flex items-center rounded-lg px-3 py-2 text-xs font-medium ${statusStyles[status]}`}
+      className={`inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-medium ${statusStyles[status]}`}
     >
       {status}
     </span>

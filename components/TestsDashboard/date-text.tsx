@@ -8,11 +8,7 @@ export function DateText({ value }: DateTextProps) {
   const label = formatTestDate(value);
 
   if (!label) {
-    return (
-      <span className="block w-full text-center text-sm text-table-value">
-        -
-      </span>
-    );
+    return <span className="text-sm text-table-value">-</span>;
   }
 
   return (
