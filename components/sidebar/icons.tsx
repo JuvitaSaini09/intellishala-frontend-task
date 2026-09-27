@@ -92,10 +92,18 @@ export function ResultIcon({ className }: SidebarIconProps) {
 
 export function AiAssistantIcon({ className }: SidebarIconProps) {
   return (
-    <Icon className={className}>
-      <path d="M8.6 9.2 10 13.6 14.6 15.1 10 16.6 8.6 21.2 7.2 16.6 2.6 15.1 7.2 13.6Z" />
-      <path d="M17.4 2.6 18.3 5.6 21.4 6.5 18.3 7.4 17.4 10.4 16.5 7.4 13.4 6.5 16.5 5.6Z" />
-    </Icon>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinejoin="miter"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M9 8.2 10.15 13.35 15.5 14.6 10.15 15.85 9 21.2 7.85 15.85 2.5 14.6 7.85 13.35Z" />
+      <path d="M17.15 2.7 17.9 5.45 20.8 6.2 17.9 6.95 17.15 9.7 16.4 6.95 13.5 6.2 16.4 5.45Z" />
+    </svg>
   );
 }
 
