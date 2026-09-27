@@ -39,7 +39,7 @@ export function TestsBoard({ tests }: TestsBoardProps) {
   }
 
   return (
-    <section className="rounded-2xl bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
+    <section className="rounded-2xl bg-white px-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
       <TestsToolbar
         tests={tests}
         filters={filters}

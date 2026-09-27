@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Educore",
-  description: "Educore frontend",
+  title: "Intellishala",
+  description: "Intellishala frontend",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

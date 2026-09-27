@@ -1,18 +1,17 @@
 import {
-  BookOpenIcon,
+  AiAssistantIcon,
+  BookIcon,
   ClipboardListIcon,
   ClipboardPlusIcon,
-  FileTextIcon,
   FolderIcon,
   GraduationCapIcon,
   ResultIcon,
-  SparklesIcon,
 } from "./icons";
 import type { Account, NavItemConfig, Workspace } from "./types";
 
 export const product = {
-  name: "Educore",
-  mark: "E",
+  name: "Intellishala",
+  mark: "I",
 } as const;
 
 export const workspace: Workspace = {
@@ -31,11 +30,11 @@ export const navItems: NavItemConfig[] = [
   { id: "my-classes", label: "My Classes", icon: GraduationCapIcon },
   { id: "create-test", label: "Create Test", icon: ClipboardPlusIcon },
   { id: "my-tests", label: "My Tests", icon: ClipboardListIcon },
-  { id: "homework", label: "Homework", icon: FileTextIcon },
-  { id: "question-bank", label: "Question Bank", icon: BookOpenIcon },
+  { id: "homework", label: "Homework", icon: BookIcon },
+  { id: "question-bank", label: "Question Bank", icon: BookIcon },
   { id: "my-files", label: "My Files", icon: FolderIcon },
   { id: "result", label: "Result", icon: ResultIcon },
-  { id: "ai-assistant", label: "AI Assistant", icon: SparklesIcon },
+  { id: "ai-assistant", label: "AI Assistant", icon: AiAssistantIcon },
 ];
 
 export const defaultActiveNavId = "my-tests";

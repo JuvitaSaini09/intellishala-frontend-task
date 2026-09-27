@@ -44,7 +44,7 @@ export function TestsToolbar({
   ];
 
   return (
-    <div className="flex flex-col gap-3 px-6 py-4 lg:flex-row lg:items-center lg:justify-between">
+    <div className="flex flex-col gap-3 border-b border-line py-4 lg:flex-row lg:items-center lg:justify-between">
       <div className="flex items-center gap-2">
         <h2 className="text-base font-semibold text-ink">My Tests</h2>
         <p

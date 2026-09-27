@@ -11,7 +11,7 @@ type TestCardProps = {
 
 export function TestCard({ test }: TestCardProps) {
   return (
-    <li className="flex flex-col gap-3 px-5 py-4">
+    <li className="flex flex-col gap-3 py-4">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-sm font-semibold text-ink">{test.title}</p>

@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { createElement, type ReactNode } from "react";
+import { Book, Folder, GraduationCap, type IconNode } from "lucide";
 import type { SidebarIconProps } from "./types";
 
 function Icon({
@@ -21,13 +22,30 @@ function Icon({
   );
 }
 
-export function GraduationCapIcon({ className }: SidebarIconProps) {
+function LucideIcon({
+  icon,
+  className,
+}: SidebarIconProps & { icon: IconNode }) {
   return (
-    <Icon className={className}>
-      <path d="M22 10 12 5 2 10l10 5 10-5Z" />
-      <path d="M6 12v5c1.2 1.6 3.4 2.5 6 2.5s4.8-.9 6-2.5v-5" />
-    </Icon>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      {icon.map(([tag, attrs], index) =>
+        createElement(tag, { ...attrs, key: index }),
+      )}
+    </svg>
   );
+}
+
+export function GraduationCapIcon({ className }: SidebarIconProps) {
+  return <LucideIcon icon={GraduationCap} className={className} />;
 }
 
 export function ClipboardPlusIcon({ className }: SidebarIconProps) {
@@ -52,32 +70,12 @@ export function ClipboardListIcon({ className }: SidebarIconProps) {
   );
 }
 
-export function FileTextIcon({ className }: SidebarIconProps) {
-  return (
-    <Icon className={className}>
-      <path d="M14 3H7.5A1.5 1.5 0 0 0 6 4.5v15A1.5 1.5 0 0 0 7.5 21h9a1.5 1.5 0 0 0 1.5-1.5V8Z" />
-      <path d="M14 3v5h5" />
-      <path d="M9 13h6" />
-      <path d="M9 17h4" />
-    </Icon>
-  );
-}
-
-export function BookOpenIcon({ className }: SidebarIconProps) {
-  return (
-    <Icon className={className}>
-      <path d="M12 7.2C10.8 5.8 8.9 5 6.5 5H3v13h3.5c2.2 0 4 0.7 5.5 2" />
-      <path d="M12 7.2C13.2 5.8 15.1 5 17.5 5H21v13h-3.5c-2.2 0-4 0.7-5.5 2" />
-    </Icon>
-  );
+export function BookIcon({ className }: SidebarIconProps) {
+  return <LucideIcon icon={Book} className={className} />;
 }
 
 export function FolderIcon({ className }: SidebarIconProps) {
-  return (
-    <Icon className={className}>
-      <path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l1.6 1.8H19.5A1.5 1.5 0 0 1 21 9.3v8.2a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5Z" />
-    </Icon>
-  );
+  return <LucideIcon icon={Folder} className={className} />;
 }
 
 export function ResultIcon({ className }: SidebarIconProps) {
@@ -92,11 +90,11 @@ export function ResultIcon({ className }: SidebarIconProps) {
   );
 }
 
-export function SparklesIcon({ className }: SidebarIconProps) {
+export function AiAssistantIcon({ className }: SidebarIconProps) {
   return (
     <Icon className={className}>
-      <path d="M12 3.5 13.2 8 17.5 9.2 13.2 10.4 12 15 10.8 10.4 6.5 9.2 10.8 8Z" />
-      <path d="M18 14.5 18.6 16.4 20.5 17 18.6 17.6 18 19.5 17.4 17.6 15.5 17 17.4 16.4Z" />
+      <path d="M8.6 9.2 10 13.6 14.6 15.1 10 16.6 8.6 21.2 7.2 16.6 2.6 15.1 7.2 13.6Z" />
+      <path d="M17.4 2.6 18.3 5.6 21.4 6.5 18.3 7.4 17.4 10.4 16.5 7.4 13.4 6.5 16.5 5.6Z" />
     </Icon>
   );
 }

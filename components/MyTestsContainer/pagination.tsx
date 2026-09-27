@@ -19,17 +19,17 @@ export function Pagination({
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
 
   return (
-    <div className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-      <p className="text-sm text-muted">
+    <div className="flex flex-col gap-3 border-t border-line py-4 sm:flex-row sm:items-center sm:justify-between">
+      <p className="text-sm text-[#cdcfd6]">
         {pageRangeLabel(page, pageSize, total)}
       </p>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-2">
         <PageButton
           label="Previous page"
           disabled={page === 1}
           onClick={() => onPageChange(page - 1)}
         >
-          ‹
+          <Chevron direction="left" />
         </PageButton>
         {pages.map((item) => (
           <PageButton
@@ -46,7 +46,7 @@ export function Pagination({
           disabled={page === pageCount}
           onClick={() => onPageChange(page + 1)}
         >
-          ›
+          <Chevron direction="right" />
         </PageButton>
       </div>
     </div>
@@ -76,13 +76,34 @@ function PageButton({
       disabled={disabled}
       onClick={onClick}
       className={[
-        "flex size-8 cursor-pointer items-center justify-center rounded-md text-sm",
+        "flex size-8 cursor-pointer items-center justify-center rounded-lg border text-sm",
         isActive
-          ? "bg-brand text-white"
-          : "text-muted hover:bg-[#F4F6F8] disabled:cursor-default disabled:opacity-40",
+          ? "border-brand bg-brand text-white"
+          : "border-[#E4E7EC] bg-white text-[#8B919C] hover:bg-[#F4F6F8] disabled:cursor-default disabled:opacity-40",
       ].join(" ")}
     >
       {children}
     </button>
+  );
+}
+
+function Chevron({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="size-3.5"
+    >
+      {direction === "left" ? (
+        <path d="M10 3.5 5.5 8 10 12.5" />
+      ) : (
+        <path d="M6 3.5 10.5 8 6 12.5" />
+      )}
+    </svg>
   );
 }
