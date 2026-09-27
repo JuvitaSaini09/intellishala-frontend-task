@@ -9,18 +9,18 @@ import {
 import type { ReactNode } from "react";
 
 function Shell({ children }: { children: ReactNode }) {
-  const { open, isDesktop, setOpen } = useSidebar();
+  const { open, close } = useSidebar();
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-page">
       <MobileTopBar />
       <div className="relative flex min-h-0 flex-1 overflow-hidden">
-        {!isDesktop && open ? (
+        {open ? (
           <button
             type="button"
             aria-label="Close sidebar"
             className="fixed inset-0 z-40 bg-[#111827]/25 lg:hidden"
-            onClick={() => setOpen(false)}
+            onClick={close}
           />
         ) : null}
         <Sidebar />

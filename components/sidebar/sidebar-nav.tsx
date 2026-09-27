@@ -7,11 +7,11 @@ import { useSidebar } from "./sidebar-context";
 
 export function SidebarNav() {
   const [activeId, setActiveId] = useState(defaultActiveNavId);
-  const { isDesktop, setOpen } = useSidebar();
+  const { close } = useSidebar();
 
   function handleSelect(id: string) {
     setActiveId(id);
-    if (!isDesktop) setOpen(false);
+    close();
   }
 
   return (

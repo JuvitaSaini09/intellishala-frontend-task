@@ -2,77 +2,46 @@
 
 import {
   createContext,
-  useCallback,
   useContext,
   useEffect,
-  useMemo,
   useState,
   type ReactNode,
 } from "react";
 
-const DESKTOP_QUERY = "(min-width: 1024px)";
-
 type SidebarContextValue = {
   open: boolean;
-  mobileOpen: boolean;
-  isDesktop: boolean;
-  setOpen: (open: boolean) => void;
   toggle: () => void;
+  close: () => void;
 };
 
 const SidebarContext = createContext<SidebarContextValue | null>(null);
 
 export function SidebarProvider({ children }: { children: ReactNode }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  function toggle() {
+    setOpen((current) => !current);
+  }
+
+  function close() {
+    setOpen(false);
+  }
 
   useEffect(() => {
-    const media = window.matchMedia(DESKTOP_QUERY);
-
-    function sync() {
-      setIsDesktop(media.matches);
-      if (media.matches) setMobileOpen(false);
-    }
-
-    sync();
-    media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
-  }, []);
-
-  useEffect(() => {
-    if (isDesktop || !mobileOpen) return;
+    if (!open) return;
 
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setMobileOpen(false);
+      if (event.key === "Escape") setOpen(false);
     }
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isDesktop, mobileOpen]);
-
-  const toggle = useCallback(() => {
-    if (window.matchMedia(DESKTOP_QUERY).matches) return;
-    setMobileOpen((current) => !current);
-  }, []);
-
-  const setOpen = useCallback((next: boolean) => {
-    if (window.matchMedia(DESKTOP_QUERY).matches) return;
-    setMobileOpen(next);
-  }, []);
-
-  const value = useMemo(
-    () => ({
-      open: isDesktop || mobileOpen,
-      mobileOpen,
-      isDesktop,
-      setOpen,
-      toggle,
-    }),
-    [isDesktop, mobileOpen, setOpen, toggle],
-  );
+  }, [open]);
 
   return (
-    <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
+    <SidebarContext.Provider value={{ open, toggle, close }}>
+      {children}
+    </SidebarContext.Provider>
   );
 }
 

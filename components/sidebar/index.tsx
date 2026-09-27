@@ -10,28 +10,26 @@ import { Title } from "./title";
 import { WorkspaceCard } from "./workspace-card";
 
 export default function Sidebar() {
-  const { open, mobileOpen, setOpen } = useSidebar();
+  const { open, close } = useSidebar();
 
   return (
     <aside
       id="app-sidebar"
       aria-label="Sidebar"
-      aria-hidden={!open}
-      inert={!open ? true : undefined}
       className={[
         "flex h-full w-64 shrink-0 flex-col bg-white px-5 pt-3 pb-5 lg:pt-7",
         "fixed inset-y-0 right-0 z-50 transition-transform duration-200 ease-out",
-        "lg:static lg:z-0 lg:translate-x-0 lg:pointer-events-auto",
-        mobileOpen
+        "lg:static lg:z-0 lg:visible lg:translate-x-0 lg:pointer-events-auto",
+        open
           ? "translate-x-0"
-          : "translate-x-full pointer-events-none",
+          : "max-lg:translate-x-full max-lg:invisible max-lg:pointer-events-none",
       ].join(" ")}
     >
       <div className="mb-4 flex justify-end lg:hidden">
         <button
           type="button"
           aria-label="Close sidebar"
-          onClick={() => setOpen(false)}
+          onClick={close}
           className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-ink transition-colors hover:bg-[#EEF1F6]"
         >
           <CloseIcon />

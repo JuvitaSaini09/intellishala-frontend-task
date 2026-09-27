@@ -6,7 +6,7 @@ import { useSidebar } from "./sidebar-context";
 import { Title } from "./title";
 
 export function MobileTopBar() {
-  const { mobileOpen, toggle } = useSidebar();
+  const { open, toggle } = useSidebar();
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b border-line bg-white px-4 lg:hidden">
@@ -16,8 +16,8 @@ export function MobileTopBar() {
       </div>
       <button
         type="button"
-        aria-label={mobileOpen ? "Close sidebar" : "Open sidebar"}
-        aria-expanded={mobileOpen}
+        aria-label={open ? "Close sidebar" : "Open sidebar"}
+        aria-expanded={open}
         aria-controls="app-sidebar"
         onClick={toggle}
         className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-ink transition-colors hover:bg-[#EEF1F6]"
