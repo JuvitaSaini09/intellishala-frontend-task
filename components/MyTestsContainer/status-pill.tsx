@@ -2,11 +2,11 @@ import type { TestStatus } from "@/lib/tests";
 
 const statusStyles: Record<TestStatus, string> = {
   Active: "bg-[#E7F8EF] text-[#0F9F6E]",
-  Scheduled: "bg-[#E8F2FE] text-[#0057F3]",
+  Scheduled: "bg-[#EAF1FB] text-brand",
   Completed: "bg-[#F3F4F6] text-[#4B5563]",
-  Published: "bg-[#EEF2FF] text-[#4338CA]",
+  Published: "bg-[#ebf7f1] text-[#32c77a]",
   Overdue: "bg-[#FDECEC] text-[#DC2626]",
-  Draft: "bg-[#FFF6E8] text-[#B45309]",
+  Draft: "bg-[#F2F2F2] text-[#6B7280]",
 };
 
 export const statusOptions: TestStatus[] = [
@@ -25,7 +25,7 @@ type StatusPillProps = {
 export function StatusPill({ status }: StatusPillProps) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${statusStyles[status]}`}
+      className={`inline-flex items-center rounded-lg px-3 py-2 text-xs font-medium ${statusStyles[status]}`}
     >
       {status}
     </span>

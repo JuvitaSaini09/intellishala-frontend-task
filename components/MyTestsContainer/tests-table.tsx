@@ -1,4 +1,5 @@
 import type { TestRecord } from "@/lib/tests";
+import { ClassSubject } from "./class-subject";
 import { DateText } from "./date-text";
 import { questionLabel, submissionLabel } from "./format";
 import { StatusPill } from "./status-pill";
@@ -10,62 +11,60 @@ type TestsTableProps = {
 };
 
 const headerClassName =
-  "px-4 py-3 text-left text-xs font-medium tracking-wide text-[#8B909A] uppercase";
+  "px-5 py-3 text-left text-[11px] font-medium tracking-[0.08em] text-table-head uppercase";
 
 export function TestsTable({ tests }: TestsTableProps) {
   return (
     <>
       <div className="hidden overflow-x-auto lg:block">
-        <table className="w-full min-w-[960px] border-collapse">
+        <table className="w-full min-w-[980px] border-collapse">
           <caption className="sr-only">Tests</caption>
-          <thead className="bg-[#F8F9FC]">
+          <thead>
             <tr>
-              <th className={headerClassName}>Test</th>
-              <th className={headerClassName}>Class</th>
-              <th className={headerClassName}>Subject</th>
+              <th className={headerClassName}>Title</th>
+              <th className={headerClassName}>Class &amp; Subject</th>
               <th className={headerClassName}>Assigned</th>
               <th className={headerClassName}>Due</th>
               <th className={headerClassName}>Status</th>
-              <th className={headerClassName}>Submissions</th>
-              <th className={`${headerClassName} text-right`}>Actions</th>
+              <th
+                className="px-5 py-3 text-center text-[11px] font-medium tracking-[0.08em] text-table-head uppercase"
+              >
+                Submissions
+              </th>
+              <th className={headerClassName}>Action</th>
             </tr>
           </thead>
           <tbody>
             {tests.map((test) => (
-              <tr key={test.id} className="border-t border-[#F0F1F5]">
-                <td className="px-4 py-3.5">
-                  <p className="text-sm font-semibold text-[#1C1C1E]">
+              <tr key={test.id} className="border-t border-line">
+                <td className="px-5 py-4">
+                  <p className="max-w-[220px] text-sm font-semibold text-ink">
                     {test.title}
                   </p>
-                  <p className="mt-0.5 text-xs text-[#8B909A]">
+                  <p className="mt-0.5 text-xs text-soft">
                     {questionLabel(test.questionCount)}
                   </p>
                 </td>
-                <td className="px-4 py-3.5 text-sm whitespace-nowrap text-[#2C2C2E]">
-                  {test.className}
+                <td className="px-5 py-4">
+                  <ClassSubject test={test} />
                 </td>
-                <td className="px-4 py-3.5 text-sm whitespace-nowrap text-[#2C2C2E]">
-                  {test.subject}
-                </td>
-                <td className="px-4 py-3.5 whitespace-nowrap">
+                <td className="px-5 py-4">
                   <DateText value={test.assignedAt} />
                 </td>
-                <td className="px-4 py-3.5 whitespace-nowrap">
+                <td className="px-5 py-4">
                   <DateText value={test.dueAt} />
                 </td>
-                <td className="px-4 py-3.5 whitespace-nowrap">
+                <td className="px-5 py-4">
                   <StatusPill status={test.status} />
                 </td>
-                <td className="px-4 py-3.5 text-sm font-medium whitespace-nowrap text-[#2C2C2E] tabular-nums">
+                <td className="px-5 py-4 text-center text-sm whitespace-nowrap text-table-value tabular-nums">
                   {submissionLabel(
                     test.submissions.submitted,
                     test.submissions.total,
                   )}
                 </td>
-                <td className="px-4 py-3.5">
-                  <div className="flex justify-end">
-                    <TestActions test={test} />
-                  </div>
+                <td className="px-5 py-4">
+                  <TestActions test={test} />
                 </td>
               </tr>
             ))}
@@ -73,7 +72,7 @@ export function TestsTable({ tests }: TestsTableProps) {
         </table>
       </div>
 
-      <ul className="divide-y divide-[#F0F1F5] lg:hidden">
+      <ul className="divide-y divide-line lg:hidden">
         {tests.map((test) => (
           <TestCard key={test.id} test={test} />
         ))}

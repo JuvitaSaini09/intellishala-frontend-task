@@ -4,20 +4,23 @@ type TestActionsProps = {
   test: TestRecord;
 };
 
+const actionButtonClassName =
+  "h-8 cursor-pointer rounded-lg border border-[#D7DCE5] bg-white px-3 text-sm text-table-value transition-colors hover:bg-[#F4F6F8] hover:text-ink";
+
 export function TestActions({ test }: TestActionsProps) {
   return (
     <div className="flex items-center gap-2">
       <button
         type="button"
         aria-label={`View ${test.title}`}
-        className="h-8 cursor-pointer rounded-lg border border-[#D7DCE5] bg-white px-3 text-xs font-medium text-[#2C2C2E] hover:bg-[#F4F6F8]"
+        className={actionButtonClassName}
       >
         View
       </button>
       <button
         type="button"
         aria-label={`Result for ${test.title}`}
-        className="h-8 cursor-pointer rounded-lg bg-[#0057F3] px-3 text-xs font-medium text-white hover:bg-[#004AD4]"
+        className={actionButtonClassName}
       >
         Result
       </button>

@@ -11,8 +11,8 @@ import {
 import type { Account, NavItemConfig, Workspace } from "./types";
 
 export const product = {
-  name: "Intellishala",
-  mark: "I",
+  name: "Educore",
+  mark: "E",
 } as const;
 
 export const workspace: Workspace = {

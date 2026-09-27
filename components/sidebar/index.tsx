@@ -10,7 +10,7 @@ export default function Sidebar() {
   return (
     <aside
       aria-label="Sidebar"
-      className="hidden h-full w-64 shrink-0 flex-col border-r border-[#F0F1F5] bg-white px-5 pt-9 pb-5 md:flex"
+      className="hidden h-full w-64 shrink-0 flex-col bg-white px-5 pt-9 pb-5 md:flex"
     >
       <div className="flex items-center gap-3">
         <Logo letter={product.mark} />

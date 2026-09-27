@@ -17,8 +17,8 @@ export function NavItem({ item, isActive, onSelect }: NavItemProps) {
       className={[
         "flex h-11 w-full cursor-pointer items-center gap-3 rounded-lg px-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0057F3]/30",
         isActive
-          ? "bg-[#E8F2FE] font-semibold text-[#0057F3]"
-          : "font-medium text-[#6E727A] hover:bg-[#F4F6F8]",
+          ? "bg-[#EAF1FB] font-semibold text-brand"
+          : "font-medium text-muted hover:bg-[#F4F6F8]",
       ].join(" ")}
     >
       <Icon className="size-5 shrink-0" />
