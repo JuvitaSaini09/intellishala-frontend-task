@@ -17,7 +17,7 @@ type TestsToolbarProps = {
 };
 
 const fieldClassName =
-  "h-10 rounded-lg border border-field bg-white px-3 text-sm text-[#4A4A4A] outline-none placeholder:text-soft focus:border-brand min-[960px]:h-9";
+  "h-10 rounded-lg border border-field bg-white px-3 text-sm text-[#4A4A4A] outline-none placeholder:text-soft focus:border-brand md:h-9";
 
 export function TestsToolbar({
   tests,
@@ -46,7 +46,7 @@ export function TestsToolbar({
   ];
 
   return (
-    <div className="flex flex-col gap-3.5 border-b border-line py-4 min-[960px]:flex-row min-[960px]:items-center min-[960px]:justify-between min-[960px]:gap-3">
+    <div className="flex flex-col gap-3.5 border-b border-line py-4 md:border-b-0 md:flex-row md:items-center md:justify-between md:gap-3">
       <div className="flex items-center gap-2">
         <h2 className="text-base font-semibold text-ink">My Tests</h2>
         <p
@@ -57,8 +57,8 @@ export function TestsToolbar({
         </p>
       </div>
 
-      <div className="flex w-full flex-col gap-2.5 min-[960px]:w-auto min-[960px]:flex-row min-[960px]:items-center min-[960px]:gap-3">
-        <label className="relative w-full min-[960px]:w-[200px]">
+      <div className="flex w-full flex-col gap-2.5 md:w-auto md:flex-row md:items-center md:gap-3">
+        <label className="relative w-full md:w-[200px]">
           <span className="sr-only">Search Tests</span>
           <SearchIcon />
           <input
@@ -70,13 +70,13 @@ export function TestsToolbar({
           />
         </label>
 
-        <div className="grid w-full grid-cols-2 gap-2.5 min-[960px]:flex min-[960px]:w-auto min-[960px]:gap-3">
+        <div className="grid w-full grid-cols-2 gap-2.5 md:flex md:w-auto md:gap-3">
           <FilterSelect
             label="Filter by class"
             value={filters.className}
             options={classOptions}
             onChange={onClassNameChange}
-            className="min-w-0 min-[960px]:w-[140px]"
+            className="min-w-0 md:w-[140px]"
           />
 
           <FilterSelect
@@ -84,7 +84,7 @@ export function TestsToolbar({
             value={filters.status}
             options={statusFilterOptions}
             onChange={(value) => onStatusChange(value as TestStatus | "")}
-            className="min-w-0 min-[960px]:w-[140px]"
+            className="min-w-0 md:w-[140px]"
           />
         </div>
       </div>

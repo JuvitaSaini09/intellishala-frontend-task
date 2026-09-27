@@ -58,7 +58,7 @@ export function FilterSelect({
         aria-expanded={open}
         aria-controls={listId}
         onClick={() => setOpen((current) => !current)}
-        className={`flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-lg border bg-white px-3 text-left text-sm text-[#535c6f] outline-none transition-colors min-[960px]:h-9 ${
+        className={`flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-lg border bg-white px-3 text-left text-sm text-[#535c6f] outline-none transition-colors md:h-9 ${
           open
             ? "border-brand"
             : "border-field hover:border-[#D0D4DD] focus-visible:border-brand"

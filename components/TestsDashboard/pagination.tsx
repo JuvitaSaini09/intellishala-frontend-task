@@ -19,7 +19,7 @@ export function Pagination({
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
 
   return (
-    <div className="flex flex-col gap-3 border-t border-line py-4 min-[960px]:flex-row min-[960px]:items-center min-[960px]:justify-between">
+    <div className="flex flex-col gap-3 border-t border-line py-4 md:flex-row md:items-center md:justify-between">
       <p className="text-sm text-muted">
         {pageRangeLabel(page, pageSize, total)}
       </p>
